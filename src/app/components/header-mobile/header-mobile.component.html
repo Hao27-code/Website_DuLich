@@ -1,0 +1,68 @@
+<ion-header class="mobile-header">
+  <div class="mobile-container">
+    <div class="logo-mobile">
+      <img src="assets/logo/logo.png">
+    </div>
+
+    <ion-button class="menu-toggle" (click)="toggleMenu()">
+      ☰
+    </ion-button>
+  </div>
+</ion-header>
+
+<div
+  class="overlay"
+  [class.active]="isMenuOpen"
+  (click)="closeMenu()">
+</div>
+
+<!--Menu-->
+<div class="mobile-menu" [class.active]="isMenuOpen">
+  <!-- nút đóng -->
+  <button class="close-btn" (click)="closeMenu()">
+    ✕
+  </button>
+
+  <!-- logo -->
+  <div class="menu-logo">
+    <img src="assets/logo/logo.png" alt="">
+  </div>
+
+  <nav class="mobile-nav">
+    <a routerLink="/"
+          (click)="closeMenu()"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }">
+      Trang chủ
+    </a>
+
+    <a routerLink="/about"
+          (click)="closeMenu()"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }">
+      Giới Thiệu
+    </a>
+
+    <a routerLink="/tours"
+          (click)="closeMenu()"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }">
+      Tour
+    </a>
+
+    <a routerLink="/blog"
+          (click)="closeMenu()"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }">
+      Tin Tức
+    </a>
+
+    <a routerLink="/contact"
+          (click)="closeMenu()"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }">
+      Liên Hệ
+    </a>
+
+  </nav>
+</div>

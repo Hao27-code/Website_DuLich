@@ -1,0 +1,164 @@
+/* =========================
+   HEADER
+========================= */
+
+.custom-toolbar{
+  width: 100%;
+}
+
+/* khung chứa toàn bộ header */
+.container{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  max-width: 1344px;
+  height: 103px;
+  margin: auto;
+}
+
+
+/* =========================
+   LOGO
+========================= */
+
+.logo{
+  width: 229px;
+  height: 69px;
+
+  padding: 0 12px;
+}
+
+
+/* =========================
+   MENU ĐIỀU HƯỚNG
+========================= */
+
+.menu{
+  padding-left: 70px;
+}
+
+/* danh sách menu */
+.menu ion-buttons{
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+/* xóa margin mặc định của ionic */
+.menu ion-button{
+  margin: 0;
+}
+
+/* nút menu */
+.nav-btn{
+  font-size: 16px;
+  padding: 38px 0;
+
+  /* giữ chữ thường */
+  text-transform: none;
+
+  /* xóa background hover mặc định của ionic */
+  --background: transparent;
+  --background-hover: transparent;
+  --background-activated: transparent;
+  --background-focused: transparent;
+
+  --box-shadow: none;
+}
+
+/* span chứa text */
+.menu .nav-btn span{
+  position: relative;
+  padding-bottom: 6px;
+}
+
+/* tạo line dưới chữ */
+.menu .nav-btn span::after{
+  content: "";
+
+  position: absolute;
+  left: 0;
+  bottom: 0;
+
+  width: 0;
+  height: 1px;
+
+  background: #000;
+
+  transition: width 0.3s ease;
+}
+
+/* hover hiện line */
+.menu .nav-btn:hover span::after{
+  width: 100%;
+}
+
+
+/* =========================
+   NÚT ĐẶT NGAY
+========================= */
+
+.btn{
+  padding: 0 12px;
+}
+
+.btn ion-button{
+  position: relative;
+
+  height: 44px;
+
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.3rem;
+
+  overflow: hidden;
+
+  --background: #4caf50;
+  --color: #fff;
+  --border-radius: 10px;
+  --box-shadow: none;
+}
+
+/* lớp màu vàng chạy ngang khi hover */
+.btn ion-button::part(native)::before{
+  content: "";
+
+  position: absolute;
+  top: 0;
+  left: -100%;
+
+  width: 100%;
+  height: 100%;
+
+  background: #ffc107;
+
+  transition: 0.3s ease;
+}
+
+/* hover chạy màu vàng */
+.btn ion-button:hover::part(native)::before{
+  left: 0;
+}
+
+
+/* desktop hiện */
+.desktop-header{
+
+  z-index: 999;
+  background: #fff;
+}
+
+
+/* mobile */
+@media screen and (max-width: 768px){
+
+  .desktop-header{
+    display: none !important;
+  }
+
+}
+ion-header{
+  position: sticky;
+  top: 0;
+}

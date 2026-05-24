@@ -1,0 +1,105 @@
+<div class="filter-box">
+
+  <!-- destination -->
+
+  <div class="filter-item">
+
+    <label>
+      Điểm đến
+    </label>
+
+    <select #destinationSelect>
+
+      <option value="">
+        Chọn điểm đến
+      </option>
+
+      <option value="da-lat">
+        Đà Lạt
+      </option>
+
+      <option value="da-nang">
+        Đà Nẵng
+      </option>
+
+      <option value="phu-quoc">
+        Phú Quốc
+      </option>
+
+      <option value="ha-giang">
+        Hà Giang
+      </option>
+
+    </select>
+
+  </div>
+
+  <!-- price -->
+  <div class="filter-item">
+
+    <label>Giá tour</label>
+
+    <div
+      #priceSlider
+      class="slider"
+    ></div>
+
+    <div class="range-values">
+
+      <input
+        type="text"
+        [value]="formatPrice(filter.minPrice)"
+        (change)="onMinPriceChange($event)"
+      >
+
+      <input
+        type="text"
+        [value]="formatPrice(filter.maxPrice)"
+        (change)="onMaxPriceChange($event)"
+      >
+
+    </div>
+
+  </div>
+
+  <!-- duration -->
+  <div class="filter-item">
+
+    <label>Số ngày</label>
+
+    <div
+      #durationSlider
+      class="slider"
+    ></div>
+
+    <div class="range-values">
+
+      <input
+        type="number"
+        [value]="filter.minDays"
+        (change)="onMinDaysChange($event)"
+      >
+
+      <input
+        type="number"
+        [value]="filter.maxDays"
+        (change)="onMaxDaysChange($event)"
+      >
+
+    </div>
+
+  </div>
+
+  <!-- button -->
+
+  <button
+    class="search-btn"
+
+    (click)="submitFilter()"
+  >
+
+    Tìm kiếm
+
+  </button>
+
+</div>
