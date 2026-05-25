@@ -1,100 +1,218 @@
 <div class="filter-box">
 
-  <!-- destination -->
+  <!-- ======================
+       DESTINATION
+  ======================= -->
 
-  <div class="filter-item">
+  <div class="filter-item destination-filter">
 
-    <label>
-      Điểm đến
-    </label>
+    <img src="assets/icon/home/map-pin.svg">
 
-    <select #destinationSelect>
+    <div
+      class="filter-preview"
+      (click)="showDestination=!showDestination"
+    >
 
-      <option value="">
-        Chọn điểm đến
-      </option>
+    <span>
+      {{ selectedDestination || 'Điểm đến' }}
+    </span>
 
-      <option value="da-lat">
+      <ion-icon
+        name="chevron-down-outline"
+        class="arrow-icon"
+      ></ion-icon>
+
+    </div>
+
+    <div
+      class="filter-panel destination-panel"
+      *ngIf="showDestination"
+    >
+
+      <div
+        class="destination-option"
+        (click)="selectDestination('Đà Lạt')"
+      >
         Đà Lạt
-      </option>
+      </div>
 
-      <option value="da-nang">
+      <div
+        class="destination-option"
+        (click)="selectDestination('Đà Nẵng')"
+      >
         Đà Nẵng
-      </option>
+      </div>
 
-      <option value="phu-quoc">
-        Phú Quốc
-      </option>
-
-      <option value="ha-giang">
+      <div
+        class="destination-option"
+        (click)="selectDestination('Hà Giang')"
+      >
         Hà Giang
-      </option>
+      </div>
 
-    </select>
-
-  </div>
-
-  <!-- price -->
-  <div class="filter-item">
-
-    <label>Giá tour</label>
-
-    <div
-      #priceSlider
-      class="slider"
-    ></div>
-
-    <div class="range-values">
-
-      <input
-        type="text"
-        [value]="formatPrice(filter.minPrice)"
-        (change)="onMinPriceChange($event)"
+      <div
+        class="destination-option"
+        (click)="selectDestination('Hà Nội')"
       >
+        Hà Nội
+      </div>
 
-      <input
-        type="text"
-        [value]="formatPrice(filter.maxPrice)"
-        (change)="onMaxPriceChange($event)"
+      <div
+        class="destination-option"
+        (click)="selectDestination('Ninh Thuận')"
       >
+        Ninh Thuận
+      </div>
 
     </div>
 
   </div>
 
-  <!-- duration -->
-  <div class="filter-item">
 
-    <label>Số ngày</label>
+  <!-- ======================
+       DURATION
+  ======================= -->
+
+  <div class="filter-item dropdown-filter">
+
 
     <div
-      #durationSlider
-      class="slider"
-    ></div>
+      class="filter-preview"
+      (click)="toggleDuration()"
+    >
 
-    <div class="range-values">
+      <div class="preview-left">
 
-      <input
-        type="number"
-        [value]="filter.minDays"
-        (change)="onMinDaysChange($event)"
-      >
+        <img src="assets/icon/home/clock-4.svg">
 
-      <input
-        type="number"
-        [value]="filter.maxDays"
-        (change)="onMaxDaysChange($event)"
-      >
+        <span>
+          {{ filter.minDays || 0 }}
+          Ngày -
+          {{ filter.maxDays || 5 }}
+          Ngày
+    </span>
+
+      </div>
+
+      <ion-icon
+        [name]="
+      showDuration
+      ? 'chevron-up-outline'
+      : 'chevron-down-outline'
+    "
+        class="arrow-icon"
+      ></ion-icon>
+
+    </div>
+
+    <div
+      class="filter-panel"
+      [hidden]="!showDuration"
+    >
+
+      <div
+        #durationSlider
+        class="slider"
+      ></div>
+
+      <div class="range-values">
+
+        <input
+          type="number"
+          [value]="filter.minDays"
+          (change)="onMinDaysChange($event)"
+        >
+
+        <input
+          type="number"
+          [value]="filter.maxDays"
+          (change)="onMaxDaysChange($event)"
+        >
+
+      </div>
 
     </div>
 
   </div>
 
-  <!-- button -->
+  <!-- ======================
+       PRICE
+  ======================= -->
+
+  <div class="filter-item dropdown-filter">
+
+
+    <div
+      class="filter-preview"
+      (click)="togglePrice()"
+    >
+
+      <div class="preview-left">
+
+        <img src="assets/icon/home/circle-dollar-sign.svg">
+
+        <span>
+
+          {{ filter.minPrice
+          ? formatPrice(filter.minPrice)
+          : '1.299.000đ' }}
+
+          -
+
+          {{ filter.maxPrice
+          ? formatPrice(filter.maxPrice)
+          : '2.799.000đ' }}
+        </span>
+
+      </div>
+
+      <ion-icon
+        [name]="
+      showPrice
+      ? 'chevron-up-outline'
+      : 'chevron-down-outline'
+    "
+        class="arrow-icon"
+      ></ion-icon>
+
+    </div>
+
+    <div
+      class="filter-panel"
+      [hidden]="!showPrice"
+    >
+
+      <div
+        #priceSlider
+        class="slider"
+      ></div>
+
+      <div class="range-values">
+
+        <input
+          type="text"
+          [value]="formatPrice(filter.minPrice)"
+          (change)="onMinPriceChange($event)"
+        >
+
+        <input
+          type="text"
+          [value]="formatPrice(filter.maxPrice)"
+          (change)="onMaxPriceChange($event)"
+        >
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- ======================
+       SEARCH BUTTON
+  ======================= -->
 
   <button
     class="search-btn"
-
     (click)="submitFilter()"
   >
 

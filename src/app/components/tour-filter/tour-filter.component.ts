@@ -8,6 +8,7 @@ import {
   Input,
   Output,
 } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 // Thư viện custom select đẹp hơn select mặc định
 import Choices from 'choices.js';
@@ -18,14 +19,25 @@ import noUiSlider from 'nouislider';
 // Interface chứa kiểu dữ liệu filter tour
 import { TourFilter } from 'src/app/models/tour-filter.model';
 import { DecimalPipe } from '@angular/common';
+import { IonIcon } from '@ionic/angular/standalone';
+import { addIcons } from 'ionicons';
+import { chevronDownOutline } from 'ionicons/icons';
 
 @Component({
   selector: 'app-tour-filter',
   templateUrl: './tour-filter.component.html',
   styleUrls: ['./tour-filter.component.scss'],
-  imports: [DecimalPipe],
+  imports: [DecimalPipe, CommonModule, IonIcon],
 })
 export class TourFilterComponent implements AfterViewInit {
+  constructor() {
+    addIcons({
+      chevronDownOutline,
+    });
+  }
+  showDuration = false;
+
+  showPrice = false;
   /* ======================
       VIEWCHILD
       Lấy DOM element từ HTML
@@ -82,12 +94,6 @@ export class TourFilterComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     // Khởi tạo select destination
     this.initDestination();
-
-    // Khởi tạo slider giá
-    this.initPriceSlider();
-
-    // Khởi tạo slider thời lượng tour
-    this.initDurationSlider();
   }
 
   /* ======================
@@ -271,5 +277,38 @@ export class TourFilterComponent implements AfterViewInit {
     this.filter.maxDays = max;
 
     this.durationSlider.nativeElement.noUiSlider.set([min, max]);
+  }
+
+  toggleDuration(): void {
+    this.showDuration = !this.showDuration;
+
+    this.showPrice = false;
+
+    if (this.showDuration) {
+      setTimeout(() => {
+        this.initDurationSlider();
+      });
+    }
+  }
+  togglePrice(): void {
+    this.showPrice = !this.showPrice;
+
+    this.showDuration = false;
+
+    if (this.showPrice) {
+      setTimeout(() => {
+        this.initPriceSlider();
+      });
+    }
+  }
+
+  showDestination = false;
+
+  selectedDestination = '';
+
+  selectDestination(destination: string) {
+    this.selectedDestination = destination;
+
+    this.showDestination = false;
   }
 }

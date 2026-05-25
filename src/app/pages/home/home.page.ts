@@ -2,9 +2,17 @@ import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {
+  IonButton,
+  IonCard,
+  IonCardContent,
+  IonCardHeader,
+  IonCardTitle,
+  IonCol,
   IonContent,
+  IonGrid,
   IonHeader,
   IonIcon,
+  IonRow,
   IonTitle,
   IonToolbar,
 } from '@ionic/angular/standalone';
@@ -29,6 +37,14 @@ import { TourFilter } from 'src/app/models/tour-filter.model';
     FormsModule,
     IonIcon,
     TourFilterComponent,
+    IonGrid,
+    IonRow,
+    IonCol,
+    IonCardHeader,
+    IonCard,
+    IonCardTitle,
+    IonCardContent,
+    IonButton,
   ],
 })
 export class HomePage {
