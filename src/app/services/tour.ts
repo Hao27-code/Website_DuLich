@@ -2,17 +2,18 @@ import { inject, Injectable } from '@angular/core';
 
 import { HttpClient, HttpParams } from '@angular/common/http';
 
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 
 import { TourFilter } from '../models/tour-filter.model';
 import { TourResponse } from '../models/tour-response.model';
+import { Tour } from '../models/tour.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TourService {
   /* địa chỉ API tour */
-  private readonly apiUrl = 'http://localhost:3000/tours';
+  private readonly apiUrl = 'https://localhost:7040/api/Tour';
 
   /* inject HttpClient để gọi API */
   private http = inject(HttpClient);
@@ -96,5 +97,24 @@ export class TourService {
     return this.http.get<TourResponse>(this.apiUrl, {
       params,
     });
+  }
+  /*lấy riêng tour đang deal*/
+  /* lấy riêng tour đang deal */
+
+  getDealTours(): Observable<Tour[]> {
+    const emptyFilter: TourFilter = {};
+
+    return this.getTours(emptyFilter).pipe(
+      map((response: TourResponse) => {
+        const now = new Date();
+
+        return response.data.filter(
+          (tour: Tour) =>
+            !!tour.discountPrice &&
+            !!tour.dealEndDate &&
+            new Date(tour.dealEndDate) > now,
+        );
+      }),
+    );
   }
 }

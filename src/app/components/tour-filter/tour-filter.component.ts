@@ -10,9 +10,6 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-// Thư viện custom select đẹp hơn select mặc định
-import Choices from 'choices.js';
-
 // Thư viện slider kéo khoảng giá trị
 import noUiSlider from 'nouislider';
 
@@ -42,10 +39,6 @@ export class TourFilterComponent implements AfterViewInit {
       VIEWCHILD
       Lấy DOM element từ HTML
   ====================== */
-
-  // Lấy select destination
-  @ViewChild('destinationSelect')
-  destinationSelect!: ElementRef;
 
   // Lấy slider giá
   @ViewChild('priceSlider')
@@ -91,35 +84,7 @@ export class TourFilterComponent implements AfterViewInit {
       Chạy sau khi HTML render xong
   ====================== */
 
-  ngAfterViewInit(): void {
-    // Khởi tạo select destination
-    this.initDestination();
-  }
-
-  /* ======================
-      DESTINATION SELECT
-      Choices.js
-  ====================== */
-
-  private initDestination(): void {
-    // Tạo custom select
-    const choices = new Choices(this.destinationSelect.nativeElement, {
-      // Tắt search trong select
-      searchEnabled: false,
-
-      // Ẩn text select mặc định
-      itemSelectText: '',
-    });
-
-    // Theo dõi khi user đổi destination
-    this.destinationSelect.nativeElement.addEventListener(
-      'change',
-      (event: any) => {
-        // Lưu destination vào filter
-        this.filter.destination = event.target.value;
-      },
-    );
-  }
+  ngAfterViewInit(): void {}
 
   /* ======================
       PRICE SLIDER
@@ -306,8 +271,10 @@ export class TourFilterComponent implements AfterViewInit {
 
   selectedDestination = '';
 
-  selectDestination(destination: string) {
+  selectDestination(destination: string): void {
     this.selectedDestination = destination;
+
+    this.filter.destination = destination;
 
     this.showDestination = false;
   }

@@ -1,0 +1,189 @@
+
+.tour-card {
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  max-width: 422px;
+
+
+  width:100%;
+  height: 100%;
+
+  align-self: flex-start;
+
+  transition:
+    transform .35s ease,
+    box-shadow .35s ease;
+
+  &:hover {
+
+    /* shadow mạnh hơn khi hover */
+    box-shadow:
+      0 20px 45px rgba(0,0,0,0.12),
+      0 6px 16px rgba(0,0,0,0.06);
+  }
+}
+
+/* image */
+
+.tour-image {
+  position: relative;
+  overflow: hidden;
+
+  /* giữ tất cả card cùng tỷ lệ ảnh */
+  aspect-ratio: 4 / 3;
+}
+
+.tour-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: 0.5s;
+  display: block;
+}
+
+.tour-card:hover .tour-image img {
+  transform: scale(1.08);
+}
+
+/* discount */
+
+.discount-badge {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  background: #ffa63d;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 8px 16px;
+  border-radius: 8px;
+}
+
+/* content */
+
+.tour-content {
+  padding: 16px;
+
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+/* title */
+
+.tour-title {
+  font-size: 20px;
+  line-height: 1.35;
+  color: #1B251B;
+  font-weight: 700;
+  margin: 0;
+
+  /* luôn đều chiều cao title */
+  min-height: 2.7em;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* info */
+
+.tour-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+}
+
+.meta-left {
+  flex: 1;
+  margin: 12px 0;
+  padding-right: 15px;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #6E7070;
+  font-size: 16px;
+  margin: 0 0 12px;
+
+  i {
+    color: #9a9a9a;
+  }
+}
+
+.meta-right {
+  border-left: 1px solid #e5e5e5;
+  padding-left: 15px;
+  margin: 12px 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  align-self: stretch;
+
+  flex: 0 0 auto;
+}
+
+.price {
+  font-size: 20px;
+  font-weight: 700;
+  color: #0D0D0C;
+  line-height: 1;
+}
+
+.old-price {
+  margin-top: 8px;
+  color: #9d9d9d;
+  text-decoration: line-through;
+  font-size: 14px;
+}
+
+/* description */
+
+.tour-desc {
+  color: #6E7070;
+  line-height: 1.75;
+  font-size: 14px;
+  padding-top: 16px;
+  margin-top: 4px;
+
+  /* description đều nhau */
+  min-height: calc(14px * 1.75 * 2);
+
+  display: -webkit-box;
+  -webkit-line-clamp: 2;  // tối đa 2 dòng
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  word-break: break-word;
+}
+
+/* button */
+
+.tour-btn {
+  margin-top: 16px;
+
+  border: none;
+  background: #4CAF50;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  line-height: 1.3rem;
+  text-transform: uppercase;
+  /* chỉnh lại */
+  width: fit-content;
+  min-width: 135px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}

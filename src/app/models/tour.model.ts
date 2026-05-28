@@ -13,10 +13,14 @@ export interface Tour {
 
   /* giá tour */
   price: number;
+  discountPrice?: number; /*giảm giá*/
 
   /* mô tả tour */
   description: string;
 
+  /* thời gian kết thúc ưu đãi*/
+  dealEndDate?: string;
+
   /* danh sách ảnh */
-  images: string[];
+  imagePath: string;
 }

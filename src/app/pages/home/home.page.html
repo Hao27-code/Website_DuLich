@@ -1,134 +1,1225 @@
-<ion-content class="banner-home">
-  <swiper-container
-    class="hero-slider"
+  <ion-content class="banner-home">
+    <swiper-container
+      class="hero-slider"
 
-    slides-per-view="1"
+      slides-per-view="1"
 
-    loop="true"
+      loop="true"
 
-    autoplay-delay="3000"
+      autoplay-delay="3000"
 
-    autoplay-disable-on-interaction="false"
+      autoplay-disable-on-interaction="false"
 
 
-    navigation="true"
-  >
-
-    <swiper-slide>
-      <img src="assets/imgs/banner-home%201.png">
-    </swiper-slide>
-
-    <swiper-slide>
-      <img src="assets/imgs/banner-home%202.png">
-    </swiper-slide>
-
-    <swiper-slide>
-      <img src="assets/imgs/banner-home%203.png">
-    </swiper-slide>
-
-  </swiper-container>
-
-  <section>
-    <app-tour-filter
-      (filterChange)="goToTours($event)"
+      navigation="true"
     >
-    </app-tour-filter>
-  </section>
 
-  <section class="experience-section">
+      <swiper-slide>
+        <img src="assets/images/banner-home%201.png">
+      </swiper-slide>
 
-    <div class="container">
+      <swiper-slide>
+        <img src="assets/images/banner-home%202.png">
+      </swiper-slide>
 
-      <!-- LEFT -->
-      <div class="left-content">
+      <swiper-slide>
+        <img src="assets/images/banner-home%203.png">
+      </swiper-slide>
 
-      <span class="subtitle">
-        Khám phá thế giới
-      </span>
+    </swiper-container>
 
-        <h2>
-          TRẢI NGHIỆM DU LỊCH ĐỘC ĐÁO VÀ KỶ NIỆM KHÓ QUÊN
-        </h2>
-
-        <p>
-          Chúng tôi tự hào giới thiệu với bạn một trải nghiệm du lịch tuyệt vời, nơi bạn có thể khám phá những điểm đến độc đáo, trải nghiệm văn hóa đa dạng và tận hưởng cảnh quan thiên nhiên tuyệt đẹp. Với sự tận tâm và chuyên nghiệp, chúng tôi cam kết mang đến cho bạn những kỷ niệm vô giá và độc đáo trên mỗi hành trình.
-        </p>
-
-        <div class="gallery-small">
-          <img src="assets/imgs/home/section_1.1.jpg" alt="">
-          <img src="assets/imgs/home/section_1.2.jpg" alt="">
-        </div>
-
-      </div>
-
-      <!-- RIGHT -->
-      <div class="right-content">
-
-        <img
-          class="main-image"
-          src="assets/imgs/home/section_1.jpg"
-          alt=""
-        >
-
-        <div class="feature-list">
-
-          <div class="feature-item">
-
-            <div class="icon-box">
-              <img src="assets/icon/home/section_1.svg">
-            </div>
-
-            <div>
-              <h4>Đa dạng điểm đến</h4>
-              <p>
-                Khám phá hàng trăm điểm đến hấp dẫn trên toàn thế giới.
-              </p>
-            </div>
-
-          </div>
-
-          <div class="feature-item">
-
-            <div class="icon-box">
-              <img src="assets/icon/home/section_1.1.svg">
-            </div>
-
-            <div>
-              <h4>Dịch vụ đáng tin</h4>
-              <p>
-                Trải nghiệm dịch vụ chuyên nghiệp và hỗ trợ khách hàng 24/7.
-              </p>
-            </div>
-
-          </div>
-
-        </div>
-
-        <button class="explore-btn">
-          KHÁM PHÁ NGAY
-        </button>
-
-        <img
-          class="plane-shape"
-          src="assets/imgs/home/section_1.3.jpg"
-          alt=""
-        >
-
-      </div>
+    <section>
+      <app-tour-filter
+        (filterChange)="goToTours($event)"
+      >
+      </app-tour-filter>
+    </section>
 
 
-    </div>
     <section class="experience-section">
 
-      <!-- content -->
+      <div class="container">
 
+        <!-- LEFT -->
+        <div class="left-content " >
+          <div data-aos="fade-right">
+            <span class="subtitle" >
+            Khám phá thế giới
+          </span>
+
+            <h2>
+              TRẢI NGHIỆM DU LỊCH ĐỘC ĐÁO VÀ KỶ NIỆM KHÓ QUÊN
+            </h2>
+
+            <p>
+              Chúng tôi tự hào giới thiệu với bạn một trải nghiệm du lịch tuyệt vời, nơi bạn có thể khám phá những điểm đến độc đáo, trải nghiệm văn hóa đa dạng và tận hưởng cảnh quan thiên nhiên tuyệt đẹp. Với sự tận tâm và chuyên nghiệp, chúng tôi cam kết mang đến cho bạn những kỷ niệm vô giá và độc đáo trên mỗi hành trình.
+            </p>
+          </div>
+          <div class="gallery-small">
+            <img src="assets/images/home/section_1.1.jpg" alt="">
+            <img src="assets/images/home/section_1.2.jpg" alt="">
+          </div>
+        </div>
+
+
+        <!-- RIGHT -->
+        <div class="right-content">
+
+          <img
+            class="main-image"
+            src="assets/images/home/section_1.jpg"
+            data-aos="zoom-in"
+            data-aos-delay="300"
+          >
+
+          <div class="feature-list">
+
+            <div class="feature-item" data-aos="fade-left"
+                 data-aos-delay="1000">
+
+              <div class="icon-box">
+                <img src="assets/icon/home/section_1.svg">
+              </div>
+
+              <div>
+                <h4>Đa dạng điểm đến</h4>
+                <p>
+                  Khám phá hàng trăm điểm đến hấp dẫn trên toàn thế giới.
+                </p>
+              </div>
+
+            </div>
+
+            <div class="feature-item" data-aos="fade-left"
+                 data-aos-delay="1000">
+
+              <div class="icon-box">
+                <img src="assets/icon/home/section_1.1.svg">
+              </div>
+
+              <div>
+                <h4>Dịch vụ đáng tin</h4>
+                <p>
+                  Trải nghiệm dịch vụ chuyên nghiệp và hỗ trợ khách hàng 24/7.
+                </p>
+              </div>
+            </div>
+
+          </div>
+
+          <button class="explore-btn" data-aos="fade-left"
+                  data-aos-delay="1000">
+            KHÁM PHÁ NGAY
+          </button>
+
+          <img
+            class="plane-shape"
+            src="assets/images/home/section_1.3.jpg"
+            alt=""
+          >
+        </div>
+
+
+
+
+      </div>
       <div class="wave-shape">
         <img
           src="assets/icon/home/wave-brush.svg"
           alt="wave">
       </div>
+    </section>
+
+    <section >
+      <app-offer></app-offer>
+      <div class="wave-shape-offer">
+        <img
+          src="assets/icon/home/wave-brush.svg"
+          alt="wave">
+      </div>
+    </section>
+
+    <section class="popular-tour">
+      <div class="container-tour">
+        <!-- heading -->
+        <div class="section-heading">
+
+        <span class="sub-title">
+          Trải nghiệm tuyệt vời
+        </span>
+
+          <h2 class="title">
+            CÁC CHUYẾN ĐI PHỔ BIẾN
+          </h2>
+
+        </div>
+        <swiper-container
+          #tourSwiper
+          class="tour-swiper"
+          slides-per-view="3"
+          loop="true"
+          pagination="true"
+          pagination-clickable="true"
+          autoplay-delay="3000"
+          autoplay-disable-on-interaction="false"
+          breakpoints='{
+      "320": { "slidesPerView": 1 },
+      "768": { "slidesPerView": 2 },
+      "1200": { "slidesPerView": 3 }
+    }'
+        >
+
+          <swiper-slide *ngFor="let tour of tours">
+
+            <app-tour-card
+              [tour]="tour">
+            </app-tour-card>
+
+          </swiper-slide>
+
+        </swiper-container>
+      </div>
+
+
+
+      <div class="wave-shape-tour">
+        <img
+          src="assets/icon/home/wave-brush.svg"
+          alt="wave">
+      </div>
+    </section>
+
+
+
+    <section class="commitment-section">
+
+
+      <div class="commitment-container">
+
+        <div class="commitment-heading slide-wrapper" data-trig>
+
+          <span class="sub-title">
+            Cam kết của chúng tôi
+          </span>
+
+          <h2 class="title">
+            TRẢI NGHIỆM DU LỊCH HOÀN HẢO
+          </h2>
+
+          <p class="commitment-desc">
+            Chúng tôi cam kết cung cấp cho bạn trải nghiệm du lịch tuyệt vời và đáng nhớ,
+            từ việc đặt vé đến khám phá điểm đến.
+          </p>
+
+        </div>
+
+
+        <div class="commitment-grid" >
+          <div class="zoom-wrapper" data-trig>
+            <!-- Card 1 -->
+
+            <div
+              class="commitment-card zoom-card" data-trig >
+
+              <div class="card-inner" >
+
+                <div class="commitment-icon">
+                  <img src="assets/icon/home/dadangphongphu.png">
+                </div>
+
+                <h3>Đa dạng phong phú</h3>
+
+                <p>
+                  Cung cấp hàng nghìn tour du lịch trong nước và quốc tế,
+                  chuyến đi nghỉ dưỡng sang trọng
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <!-- Card 2 -->
+
+            <div
+              class="commitment-card">
+
+              <div class="card-inner">
+
+                <div class="commitment-icon">
+                  <img src="assets/icon/home/camketchatluong.png">
+                </div>
+
+                <h3>Cam Kết Chất Lượng</h3>
+
+                <p>
+                  Cung cấp hàng nghìn tour du lịch trong nước và quốc tế,
+                  chuyến đi nghỉ dưỡng sang trọng
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <!-- Card 3 -->
+
+            <div
+              class="commitment-card">
+
+              <div class="card-inner">
+
+                <div class="commitment-icon">
+                  <img src="assets/icon/home/dattour.png">
+                </div>
+
+                <h3>Đặt Tour Nhanh Chóng</h3>
+
+                <p>
+                  Cung cấp hàng nghìn tour du lịch trong nước và quốc tế,
+                  chuyến đi nghỉ dưỡng sang trọng
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <!-- Card 4 -->
+
+            <div
+              class="commitment-card">
+
+              <div class="card-inner">
+
+                <div class="commitment-icon">
+                  <img src="assets/icon/home/antoan.png">
+                </div>
+
+                <h3>An Toàn & Uy Tín</h3>
+
+                <p>
+                  Cung cấp hàng nghìn tour du lịch trong nước và quốc tế,
+                  chuyến đi nghỉ dưỡng sang trọng
+                </p>
+
+              </div>
+
+            </div>
+          </div>
+
+
+
+        </div>
+
+
+      </div>
 
     </section>
-  </section>
 
-</ion-content>
+    <section class="destination-section">
+      <img
+        class="destination-decor destination-decor--van"
+        src="assets/icon/home/xe.png"
+        alt=""
+      >
+
+      <img
+        class="destination-decor destination-decor--hat"
+        src="assets/icon/home/non.png"
+        alt=""
+      >
+      <div class="commitment-heading up-wrapper" data-trig>
+          <span class="sub-title">
+            Địa điểm yêu thích
+          </span>
+
+        <h2 class="title">
+          ĐIỂM ĐẾN NỔI BẬT
+        </h2>
+      </div>
+      <div class="destination-list up-wrapper" data-trig>
+
+        <div
+          class="destination-item"
+          *ngFor="let item of destinations; let i = index"
+          [class.destination-item--active]="activeIndex === i"
+          (click)="activeIndex = i"
+        >
+
+          <img
+            class="destination-item__image"
+            [src]="item.image"
+            [alt]="item.name"
+          >
+
+          <div class="destination-item__overlay"></div>
+
+          <h3 class="destination-item__title">
+            {{ item.name }}
+          </h3>
+
+          <a
+            class="destination-item__button"
+            *ngIf="activeIndex === i"
+          >
+            Khám Phá
+          </a>
+
+        </div>
+
+      </div>
+
+      <!-- phao -->
+      <img
+        class="destination-decor destination-decor--float"
+        src="assets/icon/home/phao.png"
+        alt=""
+      >
+
+      <!-- đồng hồ -->
+      <img
+        class="destination-decor destination-decor--compass"
+        src="assets/icon/home/dongho.png"
+        alt=""
+      >
+      <div class="destination-action">
+
+        <button class="destination-action__btn up-wrapper" data-trig>
+          XEM TẤT CẢ
+        </button>
+
+      </div>
+
+    </section>
+    <div class="wave-shape-luxury">
+      <img
+        src="assets/icon/home/wave-brush.svg"
+        alt="wave">
+    </div>
+
+
+    <section class="luxury-section">
+
+
+      <div class="luxury-container">
+
+
+        <!-- LEFT CARD -->
+        <div class="luxury-content" >
+
+          <span class="sub-title slide-wrapper" data-trig>
+            Dịch vụ cao cấp
+          </span>
+
+          <h2 class="title slide-wrapper" data-trig>
+            KHU NGHỈ MÁT SANG TRỌNG
+          </h2>
+
+          <p class="commitment-desc slide-wrapper" data-trig>
+            Chúng tôi cam kết cung cấp cho bạn trải nghiệm du lịch tuyệt vời và đáng nhớ, từ việc đặt vé đến khám phá điểm đến. Với những cam kết của chúng tôi, bạn có thể yên tâm rằng chúng tôi sẽ luôn đồng hành và đảm bảo sự hài lòng của bạn.
+          </p>
+
+          <!-- feature -->
+          <div class="luxury-feature">
+
+            <div class="luxury-feature__item slide-wrapper" data-trig>
+
+              <div class="luxury-feature__icon">
+                <img src="assets/icon/home/maybay.svg">
+              </div>
+
+              <div class="box-title">
+                <h4>Đa dạng điểm đến</h4>
+                <p>
+                  Chúng tôi cung cấp mọi loại các điểm đến hấp dẫn trên toàn thế giới
+                </p>
+              </div>
+
+            </div>
+
+            <div class="luxury-feature__item slide-wrapper" data-trig>
+
+              <div class="luxury-feature__icon">
+                <img src="assets/icon/home/giaca.svg">
+              </div>
+
+              <div class="box-title">
+                <h4>Giá cả tốt nhất</h4>
+                <p>
+                  Chúng tôi cung cấp mọi loại các điểm đến hấp dẫn trên toàn thế giới
+                </p>
+              </div>
+
+            </div>
+
+            <div class="luxury-feature__item luxury-feature__item--active slide-wrapper" data-trig>
+
+              <div class="luxury-feature__icon">
+                <img src="assets/icon/home/dichvu.svg">
+              </div>
+
+              <div class="box-title">
+                <h4>Dịch vụ chất lượng</h4>
+                <p>
+                  Chúng tôi cung cấp mọi loại các điểm đến hấp dẫn trên toàn thế giới
+                </p>
+              </div>
+
+            </div>
+
+          </div>
+
+          <button class="explore-btn slide-wrapper" data-trig>
+            <span>TÌM HIỂU THÊM</span>
+          </button>
+
+        </div>
+
+        <!-- RIGHT IMAGE -->
+        <div class="luxury-image">
+
+          <img
+            src="assets/images/home/dichvucaocap.jpg"
+            alt=""
+          >
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <section class="trip-gallery">
+
+      <!-- heading -->
+      <div class="trip-gallery__heading">
+
+    <span class="sub-title">
+      Khung cảnh tuyệt đẹp
+    </span>
+
+        <h2 class="title">
+          HÌNH ẢNH CHUYẾN ĐI
+        </h2>
+
+      </div>
+
+      <!-- decor -->
+      <img
+        src="assets/images/home/plane-line.svg"
+        alt=""
+        class="trip-gallery__decor"
+      >
+
+      <!-- GRID -->
+      <div class="trip-gallery__grid">
+
+        <!-- LEFT BIG -->
+        <div
+          class="trip-gallery__left"
+          (click)="openGallery(0)"
+        >
+          <img
+            src="assets/images/home/left.jpg"
+            alt=""
+          >
+        </div>
+
+        <!-- TOP MIDDLE -->
+        <div
+          class="trip-gallery__item trip-gallery__item--top"
+          (click)="openGallery(1)"
+        >
+          <img
+            src="assets/images/home/right_1.jpg"
+            alt=""
+          >
+        </div>
+
+        <!-- RIGHT BIG -->
+        <div
+          class="trip-gallery__item trip-gallery__item--large"
+          (click)="openGallery(2)"
+        >
+          <img
+            src="assets/images/home/right_3.jpg"
+            alt=""
+          >
+        </div>
+
+        <!-- MIDDLE -->
+        <div
+          class="trip-gallery__item trip-gallery__item--medium"
+          (click)="openGallery(3)"
+        >
+          <img
+            src="assets/images/home/right_2.jpg"
+            alt=""
+          >
+        </div>
+
+        <!-- BOTTOM LEFT -->
+        <div
+          class="trip-gallery__item trip-gallery__item--small-1"
+          (click)="openGallery(4)"
+        >
+          <img
+            src="assets/images/home/right_4.jpg"
+            alt=""
+          >
+        </div>
+
+        <!-- BOTTOM RIGHT -->
+        <div
+          class="trip-gallery__item trip-gallery__item--small-2"
+          (click)="openGallery(5)"
+        >
+          <img
+            src="assets/images/home/right_5.jpg"
+            alt=""
+          >
+        </div>
+
+      </div>
+
+      <!-- MODAL -->
+      <div
+        class="gallery-modal"
+        *ngIf="selectedImage"
+        (click)="closeGallery()"
+      >
+
+        <button
+          class="gallery-close"
+          (click)="closeGallery()"
+        >
+          ✕
+        </button>
+
+        <button
+          class="gallery-nav prev"
+          (click)="prevImage($event)"
+        >
+          ❮
+        </button>
+
+        <img
+          class="gallery-modal__img"
+          [src]="selectedImage"
+          (click)="$event.stopPropagation()"
+        >
+
+        <button
+          class="gallery-nav next"
+          (click)="nextImage($event)"
+        >
+          ❯
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+     FAQ + REVIEW SECTION
+========================= -->
+
+    <section class="faq-review">
+
+      <!-- COUNTER -->
+      <div class="counter-section">
+
+        <div class="counter-card">
+          <div class="counter-shape"></div>
+          <div class="counter-content">
+            <h3>12</h3>
+            <p>Năm kinh nghiệm</p>
+          </div>
+        </div>
+
+        <div class="counter-card">
+          <div class="counter-shape"></div>
+          <div class="counter-content">
+            <h3>98%</h3>
+            <p>Đánh giá tích cực</p>
+          </div>
+        </div>
+
+        <div class="counter-card">
+          <div class="counter-shape"></div>
+          <div class="counter-content">
+            <h3>2k</h3>
+            <p>Khách thân thiết</p>
+          </div>
+        </div>
+
+        <div class="counter-card">
+          <div class="counter-shape"></div>
+          <div class="counter-content">
+            <h3>400+</h3>
+            <p>Tour hoạt động</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- FAQ -->
+      <div class="faq-wrapper">
+
+        <div class="faq-image">
+          <img src="assets/images/home/nguoingoi.png">
+          <div class="faq-shape"></div>
+        </div>
+        <div class="faq-content">
+
+          <span class="sub-title">
+            Hỗ trợ 24/7
+          </span>
+
+          <h2 class="title">
+            CÁC CÂU HỎI THƯỜNG GẶP
+          </h2>
+
+          <div class="faq-list">
+
+            <div
+              class="faq-item"
+              *ngFor="let faq of faqs; let i = index"
+              [class.active]="activeFaq === i"
+            >
+
+              <button
+                class="faq-button"
+                (click)="toggleFaq(i)"
+              >
+
+                <span>
+                  {{ faq.question }}
+                </span>
+
+                <ion-icon
+                  name="chevron-down-outline"
+                  class="faq-icon">
+                </ion-icon>
+
+              </button>
+
+              <div
+                class="faq-body"
+                [style.maxHeight]="activeFaq === i ? '220px' : '0px'"
+              >
+
+                <p>
+                  {{ faq.answer }}
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- REVIEW -->
+      <div class="section-heading">
+
+        <span class="sub-title">
+          Đánh giá tích cực
+        </span>
+
+        <h2 class="title">
+          CẢM NHẬN KHÁCH HÀNG
+        </h2>
+
+      </div>
+
+      <swiper-container
+        class="review-swiper"
+        slides-per-view="3"
+        space-between="30"
+        navigation="true"
+        loop="true"
+        autoplay-delay="3500"
+        breakpoints='{
+    "320":{"slidesPerView":1},
+    "768":{"slidesPerView":2},
+    "1200":{"slidesPerView":3}
+  }'
+      >
+
+        <swiper-slide>
+
+          <div class="review-card">
+
+            <img
+              class="review-avatar"
+              src="assets/images/home/user1.jpg">
+
+            <h4>Thị Ngọc</h4>
+
+            <p>
+              Tôi rất ấn tượng với dịch vụ đặt tour trên website.
+              Giao diện dễ sử dụng và thông tin rõ ràng.
+            </p>
+
+          </div>
+
+        </swiper-slide>
+
+        <swiper-slide>
+
+          <div class="review-card">
+
+            <img
+              class="review-avatar"
+              src="assets/images/home/user2.jpg">
+
+            <h4>Nguyễn Văn Long</h4>
+
+            <p>
+              Tôi đã có chuyến đi tuyệt vời với nhiều trải nghiệm đáng nhớ.
+            </p>
+
+          </div>
+
+        </swiper-slide>
+
+        <swiper-slide>
+
+          <div class="review-card">
+
+            <img
+              class="review-avatar"
+              src="assets/images/home/user1.jpg">
+
+            <h4>Thị Ngọc</h4>
+
+            <p>
+              Tôi rất ấn tượng với dịch vụ đặt tour trên website.
+              Giao diện dễ sử dụng và thông tin rõ ràng.
+            </p>
+
+          </div>
+
+        </swiper-slide>
+
+        <swiper-slide>
+
+          <div class="review-card">
+
+            <img
+              class="review-avatar"
+              src="assets/images/home/user1.jpg">
+
+            <h4>Thị Ngọc</h4>
+
+            <p>
+              Tôi rất ấn tượng với dịch vụ đặt tour trên website.
+              Giao diện dễ sử dụng và thông tin rõ ràng.
+            </p>
+
+          </div>
+
+        </swiper-slide>
+
+
+        <swiper-slide>
+
+          <div class="review-card">
+
+            <img
+              class="review-avatar"
+              src="assets/images/home/user1.jpg">
+
+            <h4>Thị Ngọc</h4>
+
+            <p>
+              Tôi rất ấn tượng với dịch vụ đặt tour trên website.
+              Giao diện dễ sử dụng và thông tin rõ ràng.
+            </p>
+
+          </div>
+
+        </swiper-slide>
+
+        <swiper-slide>
+
+          <div class="review-card">
+
+            <img
+              class="review-avatar"
+              src="assets/images/home/user1.jpg">
+
+            <h4>Thị Ngọc</h4>
+
+            <p>
+              Tôi rất ấn tượng với dịch vụ đặt tour trên website.
+              Giao diện dễ sử dụng và thông tin rõ ràng.
+            </p>
+
+          </div>
+
+        </swiper-slide>
+
+      </swiper-container>
+
+
+      <!-- BRAND -->
+      <swiper-container
+        class="brand-swiper"
+        slides-per-view="8"
+        loop="true"
+        autoplay-delay="0"
+        speed="10000"
+      >
+
+        <swiper-slide>
+
+          <div class="brand-logo">
+
+            <!-- logo trên -->
+            <img
+              class="logo-top"
+              src="assets/images/home/brand_1_2.svg"
+            >
+
+            <!-- logo dưới -->
+            <img
+              class="logo-bottom"
+              src="assets/images/home/brand_1_2.svg"
+            >
+
+          </div>
+
+        </swiper-slide>
+
+        <swiper-slide>
+
+          <div class="brand-logo">
+
+            <!-- logo trên -->
+            <img
+              class="logo-top"
+              src="assets/images/home/brand_1_3.svg"
+            >
+
+            <!-- logo dưới -->
+            <img
+              class="logo-bottom"
+              src="assets/images/home/brand_1_3.svg"
+            >
+
+          </div>
+
+        </swiper-slide>
+
+        <swiper-slide>
+
+          <div class="brand-logo">
+
+            <!-- logo trên -->
+            <img
+              class="logo-top"
+              src="assets/images/home/brand_1_8.svg"
+            >
+
+            <!-- logo dưới -->
+            <img
+              class="logo-bottom"
+              src="assets/images/home/brand_1_8.svg"
+            >
+
+          </div>
+
+        </swiper-slide>
+
+        <swiper-slide>
+
+          <div class="brand-logo">
+
+            <!-- logo trên -->
+            <img
+              class="logo-top"
+              src="assets/images/home/brand_1_2.svg"
+            >
+
+            <!-- logo dưới -->
+            <img
+              class="logo-bottom"
+              src="assets/images/home/brand_1_2.svg"
+            >
+
+          </div>
+
+        </swiper-slide>
+
+        <swiper-slide>
+
+          <div class="brand-logo">
+
+            <!-- logo trên -->
+            <img
+              class="logo-top"
+              src="assets/images/home/brand_1_3.svg"
+            >
+
+            <!-- logo dưới -->
+            <img
+              class="logo-bottom"
+              src="assets/images/home/brand_1_3.svg"
+            >
+
+          </div>
+
+        </swiper-slide>
+
+        <swiper-slide>
+
+          <div class="brand-logo">
+
+            <!-- logo trên -->
+            <img
+              class="logo-top"
+              src="assets/images/home/brand_1_4.svg"
+            >
+
+            <!-- logo dưới -->
+            <img
+              class="logo-bottom"
+              src="assets/images/home/brand_1_4.svg"
+            >
+
+          </div>
+
+        </swiper-slide>
+
+        <swiper-slide>
+
+          <div class="brand-logo">
+
+            <!-- logo trên -->
+            <img
+              class="logo-top"
+              src="assets/images/home/brand_1_3.svg"
+            >
+
+            <!-- logo dưới -->
+            <img
+              class="logo-bottom"
+              src="assets/images/home/brand_1_3.svg"
+            >
+
+          </div>
+
+        </swiper-slide>
+
+        <swiper-slide>
+
+          <div class="brand-logo">
+
+            <!-- logo trên -->
+            <img
+              class="logo-top"
+              src="assets/images/home/brand_1_3.svg"
+            >
+
+            <!-- logo dưới -->
+            <img
+              class="logo-bottom"
+              src="assets/images/home/brand_1_3.svg"
+            >
+
+          </div>
+
+        </swiper-slide>
+
+        <swiper-slide>
+
+          <div class="brand-logo">
+
+            <!-- logo trên -->
+            <img
+              class="logo-top"
+              src="assets/images/home/brand_1_2.svg"
+            >
+
+            <!-- logo dưới -->
+            <img
+              class="logo-bottom"
+              src="assets/images/home/brand_1_2.svg"
+            >
+
+          </div>
+
+        </swiper-slide>
+
+        <swiper-slide>
+
+          <div class="brand-logo">
+
+            <!-- logo trên -->
+            <img
+              class="logo-top"
+              src="assets/images/home/brand_1_8.svg"
+            >
+
+            <!-- logo dưới -->
+            <img
+              class="logo-bottom"
+              src="assets/images/home/brand_1_8.svg"
+            >
+
+          </div>
+
+        </swiper-slide>
+
+
+      </swiper-container>
+
+    </section>
+
+
+    <section class="blog-section">
+
+      <div class="blog-heading">
+
+        <!-- left -->
+        <div class="blog-heading__content">
+
+          <span class="sub-title">
+            Tin tức mới nhất
+          </span>
+
+          <h2 class="title">
+            TIN TỨC VÀ KINH NGHIỆM
+          </h2>
+
+        </div>
+
+        <!-- right -->
+        <a
+          href="#"
+          class="blog-all-btn"
+        >
+          XEM TẤT CẢ
+        </a>
+
+      </div>
+
+      <swiper-container
+        class="blog-swiper"
+        slides-per-view="3"
+        space-between="30"
+        loop="true"
+        breakpoints='{
+      "320":{"slidesPerView":1},
+      "768":{"slidesPerView":2},
+      "1200":{"slidesPerView":3}
+    }'
+      >
+
+        <!-- card 1 -->
+        <swiper-slide>
+
+          <div class="blog-card">
+
+            <div class="blog-card__image">
+
+              <img src="assets/images/home/blog1.jpg">
+
+            </div>
+
+            <div class="blog-card__content">
+
+              <div class="blog-meta">
+
+                <span>T11 10, 2024</span>
+                <span>5 Phút đọc</span>
+
+              </div>
+
+              <h3>
+                Top 10 Kinh Nghiệm Du Lịch Bền Vững
+              </h3>
+
+              <button>
+                XEM THÊM
+              </button>
+
+            </div>
+
+          </div>
+
+        </swiper-slide>
+
+        <!-- card 2 -->
+        <swiper-slide>
+
+          <div class="blog-card">
+
+            <div class="blog-card__image">
+              <img src="assets/images/home/blog2.jpg">
+            </div>
+
+            <div class="blog-card__content">
+
+              <div class="blog-meta">
+                <span>T11 10, 2024</span>
+                <span>5 Phút đọc</span>
+              </div>
+
+              <h3>
+                Hành Trình Ẩm Thực Qua Mọi Miền
+              </h3>
+
+              <button>
+                XEM THÊM
+              </button>
+
+            </div>
+
+          </div>
+
+        </swiper-slide>
+
+        <!-- card 3 -->
+        <swiper-slide>
+
+          <div class="blog-card">
+
+            <div class="blog-card__image">
+              <img src="assets/images/home/blog3.jpg">
+            </div>
+
+            <div class="blog-card__content">
+
+              <div class="blog-meta">
+                <span>T11 10, 2024</span>
+                <span>5 Phút đọc</span>
+              </div>
+
+              <h3>
+                Khám Phá Những Điểm Đến Du Lịch Nổi Bật
+              </h3>
+
+              <button  class="blog-btn">
+                XEM THÊM
+              </button>
+
+            </div>
+
+          </div>
+
+        </swiper-slide>
+
+      </swiper-container>
+
+    </section>
+  </ion-content>

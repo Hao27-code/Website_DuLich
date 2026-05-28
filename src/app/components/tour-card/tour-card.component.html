@@ -1,3 +1,83 @@
-<p>
-  tour-card works!
-</p>
+<div class="tour-card">
+
+  <!-- image -->
+  <div class="tour-image">
+
+    <img
+      *ngIf="tour"
+      [src]="tour.imagePath"
+      [alt]="tour.title"
+    >
+
+    <span
+        *ngIf="tour.discountPrice"
+        class="discount-badge"
+      >
+      {{
+        (
+          (tour.price - tour.discountPrice!)
+          / tour.price
+          * 100
+        ) | number:'1.0-0'
+      }}% Off
+    </span>
+
+  </div>
+
+  <!-- content -->
+  <div class="tour-content">
+
+    <!-- title -->
+    <h3 class="tour-title">
+      {{ tour.title }}
+    </h3>
+
+    <!-- info + price -->
+    <div class="tour-meta">
+
+      <!-- left -->
+      <div class="meta-left">
+
+        <div class="meta-item">
+          <i class="fa-solid fa-location-dot"></i>
+          <span>{{ tour.location }}</span>
+        </div>
+
+        <div class="meta-item">
+          <i class="fa-regular fa-clock"></i>
+          <span>{{ tour.days }} Days</span>
+        </div>
+
+      </div>
+
+      <!-- right -->
+      <div class="meta-right">
+
+        <div class="price">
+          {{ tour.price | number }}đ
+        </div>
+
+        <div
+          *ngIf="tour.discountPrice"
+          class="old-price"
+        >
+          {{ tour.discountPrice | number }}đ
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- description -->
+    <p class="tour-desc">
+      {{ tour.description }}
+    </p>
+
+    <!-- button -->
+    <button class="tour-btn">
+      XEM CHI TIẾT
+    </button>
+
+  </div>
+
+</div>

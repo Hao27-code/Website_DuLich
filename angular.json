@@ -34,6 +34,8 @@
               }
             ],
             "styles": [
+              "node_modules/trig-js/src/trig-animations.css",
+              "node_modules/aos/dist/aos.css",
               "src/global.scss",
               "src/theme/variables.scss",
               "node_modules/nouislider/dist/nouislider.css",
@@ -42,7 +44,7 @@
 
               "node_modules/choices.js/public/assets/styles/choices.min.css"
             ],
-            "scripts": [],
+            "scripts": ["node_modules/trig-js/src/trig.js"],
             "browser": "src/main.ts"
           },
           "configurations": {

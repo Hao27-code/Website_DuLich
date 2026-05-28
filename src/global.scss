@@ -40,10 +40,12 @@
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import '@ionic/angular/css/palettes/dark.system.css';
 @import url('https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap');
+@import 'aos/dist/aos.css';
+
 
 
 *{
-  font-family: 'Monrope', sans-serif;
+  font-family: 'Manrope', sans-serif;
 }
 
 ion-header ion-toolbar{
@@ -66,6 +68,7 @@ ion-header ion-toolbar{
 }
 ion-header{
   background: #fff;
+
 }
 ion-toolbar{
   --background: #fff;
@@ -82,3 +85,37 @@ ion-toolbar{
 }
 /* Reset for when we actually WANT fullscreen, but the requirement says prevent all sections from going under */
 /* If we want to allow some pages to be truly fullscreen (behind header), we would need a specific class */
+/* MOBILE ONLY */
+
+/* IONIC SCROLLBAR MOBILE */
+
+/* IONIC MOBILE SCROLLBAR FIX */
+
+@media(max-width:767px){
+
+  ion-content::part(scroll){
+    overflow-y:auto !important;
+
+    /* Firefox */
+    scrollbar-width:none !important;
+  }
+
+  /* Chrome / Edge / Safari */
+
+  ion-content::part(scroll)::-webkit-scrollbar{
+    width:0 !important;
+    display:none !important;
+  }
+
+  /* Ionic inner scroll */
+
+  .inner-scroll{
+    scrollbar-width:none !important;
+  }
+
+  .inner-scroll::-webkit-scrollbar{
+    width:0 !important;
+    display:none !important;
+  }
+
+}

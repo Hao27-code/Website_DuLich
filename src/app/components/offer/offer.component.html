@@ -1,0 +1,125 @@
+<section class="offer-section">
+
+  <div class="offer-grid">
+
+    <!-- LEFT -->
+
+    <div class="offer-left right-left-wrapper" data-trig>
+
+      <span class="sub-title">
+        Du lịch tuyệt vời
+      </span>
+
+      <h2 class="sec-title">
+        GIÁ & ƯU ĐÃI HẤP DẪN
+      </h2>
+
+      <!-- COUNTDOWN -->
+
+      <ul class="counter">
+
+        <li>
+          <strong>{{ days }}</strong>
+          <span>Days</span>
+        </li>
+
+        <span class="separator">:</span>
+
+        <li>
+          <strong>{{ hours }}</strong>
+          <span>Hours</span>
+        </li>
+
+        <span class="separator">:</span>
+
+        <li>
+          <strong>{{ minutes }}</strong>
+          <span>Minutes</span>
+        </li>
+
+        <span class="separator">:</span>
+
+        <li>
+          <strong>{{ seconds }}</strong>
+          <span>Seconds</span>
+        </li>
+
+      </ul>
+
+      <a
+        routerLink="/tour"
+        class="explore-btn"
+      >
+        KHÁM PHÁ NGAY
+      </a>
+
+    </div>
+
+      <!-- MIDDLE -->
+
+      <div class="offer-middle left-right-wrapper" data-trig>
+
+        <div
+          class="accordion-item"
+          *ngFor="let tour of dealTours"
+          [class.active]="openedTourId === tour.id"
+        >
+
+          <!-- HEADER -->
+          <div
+            class="accordion-header"
+            (click)="selectTour(tour)"
+          >
+
+            <h3>
+              {{ tour.location }}
+            </h3>
+
+            <!-- MŨI TÊN -->
+            <i
+              class="fa-solid"
+              [ngClass]="
+            openedTourId === tour.id
+              ? 'fa-chevron-up'
+              : 'fa-chevron-down'"
+            ></i>
+
+          </div>
+
+          <!-- CONTENT xổ xuống -->
+          <div
+            class="accordion-content"
+            [class.show]="openedTourId === tour.id"
+          >
+
+            <p class="price">
+              {{ tour.discountPrice | number }} đ
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- RIGHT -->
+
+      <div class="offer-right left-right-wrapper" data-trig>
+
+        <img
+          *ngIf="activeTour"
+          [src]="activeTour.imagePath"
+          [alt]="activeTour.location"
+        />
+
+      </div>
+
+
+  </div>
+  <img
+    class="destination-decor destination-decor--van"
+    src="assets/icon/home/xe.png"
+    alt=""
+  >
+
+</section>
