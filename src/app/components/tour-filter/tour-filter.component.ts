@@ -7,6 +7,8 @@ import {
   EventEmitter,
   Input,
   Output,
+  OnChanges,
+  SimpleChanges,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -19,6 +21,7 @@ import { DecimalPipe } from '@angular/common';
 import { IonIcon } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { chevronDownOutline } from 'ionicons/icons';
+import { Tour } from '../../models/tour.model';
 
 @Component({
   selector: 'app-tour-filter',
@@ -26,7 +29,7 @@ import { chevronDownOutline } from 'ionicons/icons';
   styleUrls: ['./tour-filter.component.scss'],
   imports: [DecimalPipe, CommonModule, IonIcon],
 })
-export class TourFilterComponent implements AfterViewInit {
+export class TourFilterComponent implements AfterViewInit, OnChanges {
   constructor() {
     addIcons({
       chevronDownOutline,
@@ -57,6 +60,9 @@ export class TourFilterComponent implements AfterViewInit {
   @Input()
   filters?: TourFilter;
 
+  @Input()
+  tours: Tour[] = [];
+
   /* ======================
       OUTPUT
       Gửi dữ liệu từ con -> cha
@@ -78,7 +84,8 @@ export class TourFilterComponent implements AfterViewInit {
     // Số item mặc định
     limit: 12,
   };
-
+  private priceSliderInit = false;
+  private durationSliderInit = false;
   /* ======================
       LIFECYCLE
       Chạy sau khi HTML render xong
@@ -92,33 +99,30 @@ export class TourFilterComponent implements AfterViewInit {
   ====================== */
 
   private initPriceSlider(): void {
-    // Tạo slider giá
     noUiSlider.create(this.priceSlider.nativeElement, {
-      // Giá trị mặc định
-      // 1tr -> 5tr
       start: [1000000, 5000000],
-
-      // Nối vùng giữa slider
       connect: true,
-
-      // Giới hạn giá
       range: {
         min: 0,
         max: 10000000,
       },
     });
 
-    // Theo dõi khi user kéo slider
     this.priceSlider.nativeElement.noUiSlider.on(
       'update',
       (values: string[]) => {
-        // Giá nhỏ nhất
         this.filter.minPrice = Math.round(Number(values[0]));
 
-        // Giá lớn nhất
         this.filter.maxPrice = Math.round(Number(values[1]));
       },
     );
+    this.priceSlider.nativeElement.noUiSlider.on('end', () => {
+      this.showPrice = false;
+
+      const activeEl = document.activeElement as HTMLElement;
+
+      activeEl?.blur();
+    });
   }
 
   /* ======================
@@ -127,35 +131,31 @@ export class TourFilterComponent implements AfterViewInit {
   ====================== */
 
   private initDurationSlider(): void {
-    // Tạo slider duration
     noUiSlider.create(this.durationSlider.nativeElement, {
-      // Mặc định 1 -> 7 ngày
       start: [1, 7],
-
-      // Nối giữa slider
       connect: true,
-
-      // Kéo từng bước 1 ngày
       step: 1,
-
-      // Giới hạn 1 -> 30 ngày
       range: {
         min: 1,
         max: 30,
       },
     });
 
-    // Theo dõi khi user kéo slider
     this.durationSlider.nativeElement.noUiSlider.on(
       'update',
       (values: string[]) => {
-        // Số ngày tối thiểu
         this.filter.minDays = Math.round(Number(values[0]));
 
-        // Số ngày tối đa
         this.filter.maxDays = Math.round(Number(values[1]));
       },
     );
+    this.durationSlider.nativeElement.noUiSlider.on('end', () => {
+      this.showDuration = false;
+
+      const activeEl = document.activeElement as HTMLElement;
+
+      activeEl?.blur();
+    });
   }
 
   /* ======================
@@ -164,8 +164,6 @@ export class TourFilterComponent implements AfterViewInit {
   ====================== */
 
   submitFilter(): void {
-    // Emit filter hiện tại
-    // Cha sẽ nhận qua (filterChange)
     this.filterChange.emit(this.filter);
   }
 
@@ -178,7 +176,7 @@ export class TourFilterComponent implements AfterViewInit {
   }
 
   formatPrice(value?: number): string {
-    if (!value) {
+    if (value === undefined || value === null) {
       return '';
     }
 
@@ -246,36 +244,63 @@ export class TourFilterComponent implements AfterViewInit {
 
   toggleDuration(): void {
     this.showDuration = !this.showDuration;
-
     this.showPrice = false;
 
-    if (this.showDuration) {
+    if (this.showDuration && !this.durationSliderInit) {
       setTimeout(() => {
         this.initDurationSlider();
+        this.durationSliderInit = true;
       });
     }
   }
   togglePrice(): void {
     this.showPrice = !this.showPrice;
-
     this.showDuration = false;
 
-    if (this.showPrice) {
+    if (this.showPrice && !this.priceSliderInit) {
       setTimeout(() => {
         this.initPriceSlider();
+        this.priceSliderInit = true;
       });
     }
   }
 
   showDestination = false;
 
-  selectedDestination = '';
-
-  selectDestination(destination: string): void {
-    this.selectedDestination = destination;
-
-    this.filter.destination = destination;
+  toggleDestination(destination: string): void {
+    this.filter.destination = [destination];
 
     this.showDestination = false;
+  }
+
+  get destinations(): string[] {
+    return [...new Set(this.tours.map((t) => t.location))];
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['filters'] && this.filters) {
+      this.filter = {
+        ...this.filters,
+      };
+
+      if (this.priceSliderInit && this.priceSlider?.nativeElement?.noUiSlider) {
+        this.priceSlider.nativeElement.noUiSlider.set([
+          this.filter.minPrice ?? 1000000,
+
+          this.filter.maxPrice ?? 5000000,
+        ]);
+      }
+
+      if (
+        this.durationSliderInit &&
+        this.durationSlider?.nativeElement?.noUiSlider
+      ) {
+        this.durationSlider.nativeElement.noUiSlider.set([
+          this.filter.minDays ?? 1,
+
+          this.filter.maxDays ?? 7,
+        ]);
+      }
+    }
   }
 }

@@ -119,6 +119,62 @@ export class HomePage implements AfterViewInit, OnInit, OnDestroy {
     });
 
     swiperEl.initialize();
+
+    /* hiệu ứng số chạy khi scroll*/
+    // Lấy tất cả phần tử chứa số cần animation
+    const nums = document.querySelectorAll('.counter-number');
+
+    // Theo dõi khi phần tử xuất hiện trên màn hình
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          // Nếu chưa scroll tới thì bỏ qua
+          if (!entry.isIntersecting) return;
+
+          // Phần tử hiện tại
+          const el = entry.target as HTMLElement;
+
+          // Lấy giá trị cuối cùng từ data-target
+          // Ví dụ data-target="98" => target = 98
+          const target = +el.dataset['target']!;
+
+          // Giá trị bắt đầu từ 0
+          let count = 0;
+
+          // Chạy tăng số theo thời gian
+          const timer = setInterval(() => {
+            // Mỗi lần tăng một lượng nhỏ
+            // target/50 để animation mượt hơn
+            count += Math.ceil(target / 50);
+
+            // Nếu vượt quá target thì dừng lại
+            if (count >= target) {
+              count = target;
+              clearInterval(timer);
+            }
+
+            // Hiển thị số theo format mong muốn
+            el.innerText =
+              target === 98
+                ? count + '%' // 98%
+                : target === 400
+                  ? count + '+' // 400+
+                  : target === 2000 // 2k
+                    ? Math.floor(count / 1000) + 'k'
+                    : count.toString(); // số thường
+          }, 30); // cập nhật mỗi 30ms
+
+          // Chỉ chạy animation 1 lần
+          observer.unobserve(el);
+        });
+      },
+      {
+        threshold: 0.4, // 40% phần tử xuất hiện mới chạy
+      },
+    );
+
+    // Bắt đầu theo dõi từng counter
+    nums.forEach((el) => observer.observe(el));
   }
 
   private tourService = inject(TourService);

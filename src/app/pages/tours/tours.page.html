@@ -1,3 +1,522 @@
-<ion-content>
-  <app-tour-filter></app-tour-filter>
+<ion-content >
+
+  <section class="tours-page">
+
+    <!-- SIDEBAR -->
+
+    <aside class="tours-sidebar">
+
+      <div class="filter-box">
+
+        <!-- HEADER -->
+
+        <div class="filter-header">
+
+          <h3>Tiêu chuẩn</h3>
+
+          <button
+            class="reset-btn"
+            (click)="resetFilters()">
+
+            Đặt lại
+
+          </button>
+
+        </div>
+
+        <!-- DESTINATION -->
+
+
+        <div class="filter-group">
+
+          <div
+            class="group-title"
+            (click)="toggleSection('destination')">
+
+            <h4>Điểm đến</h4>
+
+            <ion-icon
+              [name]="
+        showDestination
+        ? 'chevron-up-outline'
+        : 'chevron-down-outline'
+      ">
+            </ion-icon>
+
+          </div>
+
+          <div
+            class="group-content"
+            *ngIf="showDestination">
+
+            <label
+              class="filter-item"
+              *ngFor="
+        let location of
+        (
+          showAllDestination
+          ? destinations
+          : destinations
+            | slice:0:4
+        )
+      ">
+
+              <input
+                type="checkbox"
+                [checked]="
+          filters.destination?.includes(
+            location
+          )
+        "
+                (change)="
+          toggleDestination(
+            location,
+            $event
+          )
+        ">
+
+              <span>
+        {{ location }}
+      </span>
+
+            </label>
+
+            <a
+              *ngIf="
+        destinations.length > 4
+      "
+              class="show-more"
+              (click)="
+        toggleShowAllDestination()
+      ">
+
+              {{
+                showAllDestination
+                  ? 'Ít hơn'
+                  : 'Show all'
+              }}
+
+            </a>
+
+          </div>
+
+        </div>
+
+
+        <!-- PRICE -->
+        <!-- PRICE -->
+        <div class="filter-group">
+
+          <div
+            class="group-title"
+            (click)="toggleSection('price')">
+
+            <h4>Giá</h4>
+
+            <ion-icon
+              [name]="
+        showPrice
+          ? 'chevron-up-outline'
+          : 'chevron-down-outline'
+      ">
+            </ion-icon>
+
+          </div>
+
+          <div
+            *ngIf="showPrice"
+            class="group-content">
+
+            <div class="range-slider">
+
+              <!-- bubble min -->
+              <span
+                class="bubble"
+                [style.left.%]="priceMinPercent">
+
+        {{ filters.minPrice | number }}đ
+
+      </span>
+
+              <!-- bubble max -->
+              <span
+                class="bubble"
+                [style.left.%]="priceMaxPercent">
+
+        {{ filters.maxPrice | number }}đ
+
+      </span>
+
+              <!-- min -->
+              <input
+                type="range"
+                min="1299000"
+                max="2799000"
+                step="100000"
+                [(ngModel)]="filters.minPrice"
+                (input)="onPriceMinChange()">
+
+              <!-- max -->
+              <input
+                type="range"
+                min="1299000"
+                max="2799000"
+                step="100000"
+                [(ngModel)]="filters.maxPrice"
+                (input)="onPriceMaxChange()">
+
+            </div>
+
+            <div class="range-values">
+
+              <span>1,299,000đ</span>
+              <span>2,799,000đ</span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- DURATION -->
+
+        <!-- DURATION -->
+        <div class="filter-group">
+
+          <div
+            class="group-title"
+            (click)="toggleSection('duration')">
+
+            <h4>Duration</h4>
+
+            <ion-icon
+              [name]="
+        showDuration
+          ? 'chevron-up-outline'
+          : 'chevron-down-outline'
+      ">
+            </ion-icon>
+
+          </div>
+
+          <div
+            *ngIf="showDuration"
+            class="group-content">
+
+            <div class="range-slider">
+
+              <!-- bubble min -->
+              <span
+                class="bubble"
+                [style.left.%]="daysMinPercent">
+
+        {{ filters.minDays }} Days
+
+      </span>
+
+              <!-- bubble max -->
+              <span
+                class="bubble"
+                [style.left.%]="daysMaxPercent">
+
+        {{ filters.maxDays }} Days
+
+      </span>
+
+              <!-- min -->
+              <input
+                type="range"
+                min="0"
+                max="5"
+                [(ngModel)]="filters.minDays"
+                (input)="onDaysMinChange()">
+
+              <!-- max -->
+              <input
+                type="range"
+                min="0"
+                max="5"
+                [(ngModel)]="filters.maxDays"
+                (input)="onDaysMaxChange()">
+
+            </div>
+
+            <div class="range-values">
+
+              <span>0 Days</span>
+              <span>5 Days</span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- ACTIVITIES -->
+
+        <div class="filter-group">
+
+          <div
+            class="group-title"
+            (click)="
+              toggleSection(
+                'activities'
+              )
+            ">
+
+            <h4>Các hoạt động</h4>
+
+            <ion-icon
+              [name]="
+                showActivities
+                ? 'chevron-up-outline'
+                : 'chevron-down-outline'
+              ">
+            </ion-icon>
+
+          </div>
+
+          <div
+            *ngIf="
+              showActivities
+            "
+            class="group-content">
+
+            <label
+              class="filter-item"
+              *ngFor="
+                let item of
+                (
+                  showAllActivities
+                  ? activitiesList
+                  : activitiesList
+                    | slice:0:4
+                )
+              ">
+
+              <input
+                type="checkbox"
+                (change)="
+                  toggleActivity(
+                    item,
+                    $event
+                  )
+                ">
+
+              <span>
+                {{ item }}
+              </span>
+
+            </label>
+
+            <a
+              class="show-more"
+              (click)="
+                toggleShowAllActivities()
+              ">
+
+              {{
+                showAllActivities
+                  ? 'Ít hơn'
+                  : 'Show all'
+              }}
+
+            </a>
+
+          </div>
+
+        </div>
+
+        <!-- TRIP TYPE -->
+
+        <div class="filter-group">
+
+          <div
+            class="group-title"
+            (click)="
+              toggleSection(
+                'tripType'
+              )
+            ">
+
+            <h4>
+              Loại chuyến đi
+            </h4>
+
+            <ion-icon
+              [name]="
+                showTripType
+                ? 'chevron-up-outline'
+                : 'chevron-down-outline'
+              ">
+            </ion-icon>
+
+          </div>
+
+          <div
+            *ngIf="
+              showTripType
+            "
+            class="group-content">
+
+            <label
+              class="filter-item"
+              *ngFor="
+                let type
+                of tripTypesList
+              ">
+
+              <input
+                type="checkbox"
+                (change)="
+                  toggleTripType(
+                    type,
+                    $event
+                  )
+                ">
+
+              <span>
+                {{ type }}
+              </span>
+
+            </label>
+
+          </div>
+
+        </div>
+
+        <!-- DIFFICULTY -->
+
+        <div class="filter-group">
+
+          <div
+            class="group-title"
+            (click)="
+              toggleSection(
+                'difficulty'
+              )
+            ">
+
+            <h4>
+              Difficulties
+            </h4>
+
+            <ion-icon
+              [name]="
+                showDifficulty
+                ? 'chevron-up-outline'
+                : 'chevron-down-outline'
+              ">
+            </ion-icon>
+
+          </div>
+
+          <div
+            *ngIf="
+              showDifficulty
+            "
+            class="group-content">
+
+            <label
+              class="filter-item">
+
+              <input
+                type="checkbox"
+                (change)="
+                  setDifficulty(
+                    'Easy'
+                  )
+                ">
+
+              <span>
+                Easy
+              </span>
+
+            </label>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </aside>
+
+    <!-- RIGHT CONTENT -->
+
+    <div class="tours-content">
+
+      <!-- TOOLBAR -->
+
+      <div class="tours-toolbar">
+
+        <div class="toolbar-info">
+
+          <span>
+            Sắp xếp:
+          </span>
+
+          <select
+            [(ngModel)]="
+              filters.sort
+            "
+            (change)="
+              loadTours()
+            ">
+
+            <option value="">
+              Mới nhất
+            </option>
+
+            <option
+              value="priceAsc">
+
+              Giá tăng
+
+            </option>
+
+            <option
+              value="priceDesc">
+
+              Giá giảm
+
+            </option>
+
+          </select>
+
+        </div>
+
+      </div>
+
+      <!-- GRID -->
+
+      <div class="tours-grid">
+
+        <app-tour-card
+          *ngFor="
+            let tour of tours
+          "
+          [tour]="tour">
+
+        </app-tour-card>
+
+      </div>
+
+      <!-- EMPTY -->
+
+      <div
+        class="empty-state"
+        *ngIf="
+          !loading &&
+          tours.length === 0
+        ">
+
+        Không tìm thấy tour
+
+      </div>
+
+    </div>
+
+  </section>
+
 </ion-content>

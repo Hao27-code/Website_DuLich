@@ -1,7 +1,6 @@
 export interface TourFilter {
   /* destination */
-  destination?: string;
-
+  destination?: string[];
   /* price */
   minPrice?: number;
   maxPrice?: number;
@@ -12,6 +11,12 @@ export interface TourFilter {
 
   /* search */
   keyword?: string;
+
+  activities?: string[];
+
+  tripTypes?: string[];
+
+  difficulty?: string;
 
   /* pagination */
   page?: number;

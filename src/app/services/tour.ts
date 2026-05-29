@@ -28,8 +28,10 @@ export class TourService {
        filter điểm đến
     ======================= */
 
-    if (filters.destination) {
-      params = params.set('destination', filters.destination);
+    if (filters.destination && filters.destination.length) {
+      filters.destination.forEach((d: string) => {
+        params = params.append('destination', d);
+      });
     }
 
     /* =======================
@@ -72,6 +74,19 @@ export class TourService {
       params = params.set('keyword', filters.keyword);
     }
 
+    if (filters.activities && filters.activities.length > 0) {
+      filters.activities.forEach((a: string) => {
+        params = params.append('activities', a);
+      });
+    }
+    if (filters.tripTypes && filters.tripTypes.length > 0) {
+      filters.tripTypes.forEach((t: string) => {
+        params = params.append('tripTypes', t);
+      });
+    }
+    if (filters.difficulty) {
+      params = params.set('difficulty', filters.difficulty);
+    }
     /* =======================
        phân trang
     ======================= */

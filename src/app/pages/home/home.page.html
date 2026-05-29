@@ -30,6 +30,8 @@
 
     <section>
       <app-tour-filter
+        [filters]="filters"
+        [tours]="tours"
         (filterChange)="goToTours($event)"
       >
       </app-tour-filter>
@@ -42,7 +44,7 @@
 
         <!-- LEFT -->
         <div class="left-content " >
-          <div data-aos="fade-right">
+          <div>
             <span class="subtitle" >
             Khám phá thế giới
           </span>
@@ -68,14 +70,11 @@
           <img
             class="main-image"
             src="assets/images/home/section_1.jpg"
-            data-aos="zoom-in"
-            data-aos-delay="300"
           >
 
           <div class="feature-list">
 
-            <div class="feature-item" data-aos="fade-left"
-                 data-aos-delay="1000">
+            <div class="feature-item">
 
               <div class="icon-box">
                 <img src="assets/icon/home/section_1.svg">
@@ -90,8 +89,7 @@
 
             </div>
 
-            <div class="feature-item" data-aos="fade-left"
-                 data-aos-delay="1000">
+            <div class="feature-item">
 
               <div class="icon-box">
                 <img src="assets/icon/home/section_1.1.svg">
@@ -107,8 +105,7 @@
 
           </div>
 
-          <button class="explore-btn" data-aos="fade-left"
-                  data-aos-delay="1000">
+          <button class="explore-btn">
             KHÁM PHÁ NGAY
           </button>
 
@@ -487,19 +484,32 @@
         </div>
 
       </div>
-
+      <div class="wave-shape-tour">
+        <img
+          src="assets/icon/home/wave-brush.svg"
+          alt="wave">
+      </div>
     </section>
 
 
 
     <section class="trip-gallery">
-
+      <img
+        src="assets/icon/home/line.png"
+        alt=""
+        class="trip-gallery__decor"
+      />
+      <img
+        src="assets/icon/home/shape_4.png"
+        alt=""
+        class="trip-gallery__plane"
+      />
       <!-- heading -->
       <div class="trip-gallery__heading">
 
-    <span class="sub-title">
-      Khung cảnh tuyệt đẹp
-    </span>
+        <span class="sub-title">
+          Khung cảnh tuyệt đẹp
+        </span>
 
         <h2 class="title">
           HÌNH ẢNH CHUYẾN ĐI
@@ -629,46 +639,92 @@
 ========================= -->
 
     <section class="faq-review">
+      <!-- LEFT DECOR -->
+      <img
+        src="assets/icon/home/shape_1.png"
+        class="faq-decor faq-decor--balloon-big"
+        alt=""
+      >
 
+      <img
+        src="assets/icon/home/shape_2.png"
+        class="faq-decor faq-decor--balloon-small1"
+        alt=""
+      >
+
+      <img
+        src="assets/icon/home/shape_3.png"
+        class="faq-decor faq-decor--balloon-small2"
+        alt=""
+      >
+
+      <!-- RIGHT DECOR -->
+      <img
+        src="assets/icon/home/shape_5.png"
+        class="faq-decor faq-decor--anchor"
+        alt=""
+      >
       <!-- COUNTER -->
       <div class="counter-section">
 
         <div class="counter-card">
-          <div class="counter-shape"></div>
+          <div class="counter-shape orbit-a"></div>
           <div class="counter-content">
-            <h3>12</h3>
+            <h3 class="counter-number" data-target="12">0</h3>
             <p>Năm kinh nghiệm</p>
           </div>
         </div>
 
         <div class="counter-card">
-          <div class="counter-shape"></div>
+          <div class="counter-shape orbit-b"></div>
           <div class="counter-content">
-            <h3>98%</h3>
+            <h3 class="counter-number" data-target="98">0%</h3>
             <p>Đánh giá tích cực</p>
           </div>
         </div>
 
         <div class="counter-card">
-          <div class="counter-shape"></div>
+          <div class="counter-shape orbit-a"></div>
           <div class="counter-content">
-            <h3>2k</h3>
+            <h3 class="counter-number" data-target="2000">0</h3>
             <p>Khách thân thiết</p>
           </div>
         </div>
 
         <div class="counter-card">
-          <div class="counter-shape"></div>
+          <div class="counter-shape orbit-b"></div>
           <div class="counter-content">
-            <h3>400+</h3>
+            <h3 class="counter-number" data-target="400">0+</h3>
             <p>Tour hoạt động</p>
           </div>
         </div>
+        <img
+          src="assets/icon/home/shape_6.png"
+          class="faq-decor faq-decor--balloon-tree"
+          alt=""
+        >
 
       </div>
 
       <!-- FAQ -->
       <div class="faq-wrapper">
+          <img
+            src="assets/icon/home/shape_1.png"
+            class="faq-decor faq-decor--balloon-big-1"
+            alt=""
+          >
+
+          <img
+            src="assets/icon/home/shape_2.png"
+            class="faq-decor faq-decor--balloon-small1-1"
+            alt=""
+          >
+
+          <img
+            src="assets/icon/home/shape_3.png"
+            class="faq-decor faq-decor--balloon-small2-1"
+            alt=""
+          >
 
         <div class="faq-image">
           <img src="assets/images/home/nguoingoi.png">
@@ -877,7 +933,12 @@
         slides-per-view="8"
         loop="true"
         autoplay-delay="0"
-        speed="10000"
+        speed="9000"
+        breakpoints='{
+    "320":{"slidesPerView":1},
+    "768":{"slidesPerView":3},
+    "1200":{"slidesPerView":8}
+  }'
       >
 
         <swiper-slide>
@@ -1085,7 +1146,11 @@
 
     </section>
 
-
+    <div class="wave-shape-luxury">
+      <img
+        src="assets/icon/home/wave-brush.svg"
+        alt="wave">
+    </div>
     <section class="blog-section">
 
       <div class="blog-heading">

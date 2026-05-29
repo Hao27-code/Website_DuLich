@@ -23,4 +23,8 @@ export interface Tour {
 
   /* danh sách ảnh */
   imagePath: string;
+
+  activities?: string;
+  tripType?: string;
+  difficulty?: string;
 }
